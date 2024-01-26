@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나잡아봐랔ㅋ</title>
+</head>
+<style>
+    img {
+        width: 300px;
+    }
+</style>
+
+<body>
+    <img src="./내얼굴(4대3).jpg" alt="방성훈의 용안" />
+    <a href="./index.html" target="_parent"></a>
+
+
+    <script>
+        let fuckingTop = Math.floor(Math.random() * 1081) - 400;
+        let fuckingLeft = Math.floor(Math.random() * 1921) - 300;
+        let option = `
+                innerWidth=300,
+                innerHeight=400,
+                top=${fuckingTop},
+                left=${fuckingLeft},
+            `;
+        setTimeout(() => {
+            const popup = window.open("./sasasat!.html", fuckingTop, option);
+            if (!popup) {
+                alert('팝업 차단을 해제해주세요')
+            } else {
+                popup.focus()
+            }
+            window.close();
+        }, 500);
+    </script>
+</body>
+
+</html>

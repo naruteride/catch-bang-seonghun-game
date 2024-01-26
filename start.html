@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>방성훈을 잡아라!</title>
+    <style>
+        html,
+        body {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* @keyframes 움찔 {
+            0% {
+                transform: translateX(-10px);
+            }
+            50% {
+                transform: translateX(500px);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        } */
+
+        h1 {
+            text-align: center;
+        }
+
+        .right {
+            transform: translateX(500px);
+        }
+
+        .left {
+            transform: translateX(-10px);
+        }
+
+        .display-none {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="display-none">일본행 비행기에서 방성훈이 난동을 피우고 있다!</h1>
+    <h1 class="display-none">방성훈을 착석시키지 않으면 비행기는 착륙할 수 없다!</h1>
+    <h1 class="display-none">방성훈을 잡아서 안전하게 착륙하자!</h1>
+    <button class="display-none">
+        <h1>시작하기</h1>
+    </button>
+
+    <script>
+        function dojo(element) {
+            element.classList.remove("display-none");
+            element.classList.add("right");
+
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    element.classList.add("left");
+                    resolve();
+                }, 10)
+            }).then(() => {
+                return new Promise(resolve => {
+                    setTimeout(() => {
+                        element.classList.remove("right");
+                        element.classList.remove("left");
+                        setTimeout(() => {
+                            resolve();
+                        }, 1000)
+                    }, 10)
+                })
+            })
+        }
+
+        dojo(document.querySelector("h1:nth-child(1)"))
+            .then(() => dojo(document.querySelector("h1:nth-child(2)")))
+            .then(() => dojo(document.querySelector("h1:nth-child(3)")))
+            .then(() => dojo(document.querySelector("button")))
+
+        let fuckingTop = Math.floor(Math.random() * 1081) - 400;
+        let fuckingLeft = Math.floor(Math.random() * 1921) - 300;
+        let option = `
+                innerWidth=300,
+                innerHeight=400,
+                top=${fuckingTop},
+                left=${fuckingLeft},
+            `;
+        document.querySelector("button").addEventListener("click", () => {
+            const popup = window.open("./sasasat!.html", "저새끼 잡아!!", option);
+            if (!popup) {
+                alert('팝업 차단을 해제해주세요')
+            } else {
+                popup.focus()
+            }
+            window.close();
+        })
+
+
+    </script>
+</body>
+
+</html>
